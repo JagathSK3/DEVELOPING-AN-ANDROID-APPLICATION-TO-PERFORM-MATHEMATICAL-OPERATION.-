@@ -25,12 +25,41 @@ The platform uses signed two's complement integer arithmetic with int and long p
 
 
 ## PROGRAM:
-
-
-
-
+java code
+```
+package com.example.samplec;
+import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity { EditText num1, num2;
+    Button addBtn, subBtn, mulBtn, divBtn; TextView result;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        num1 = findViewById(R.id.num1);
+        num2 = findViewById(R.id.num2);
+        addBtn = findViewById(R.id.addBtn);
+        subBtn = findViewById(R.id.subBtn);
+        mulBtn = findViewById(R.id.mulBtn);
+        divBtn = findViewById(R.id.divBtn);
+        result = findViewById(R.id.result);
+        addBtn.setOnClickListener(v -> operate('+'));
+        subBtn.setOnClickListener(v -> operate('-'));
+        mulBtn.setOnClickListener(v -> operate('*'));
+        divBtn.setOnClickListener(v -> operate('/'));
+    }
+    private void operate(char op) {
+        double n1 = Double.parseDouble(num1.getText().toString()); double n2 = Double.parseDouble(num2.getText().toString()); double res = 0;
+        switch (op) {
+            case '+': res = n1 + n2; break; case '-': res = n1-n2; break; case '*': res = n1 * n2; break;
+            case '/': res = n2!=0? n1/n2: 0; break; }
+        result.setText("Result: " + res); }
+}
+```
 ## OUTPUT:
 
+<img width="1080" height="2400" alt="Screenshot_20250925_105426" src="https://github.com/user-attachments/assets/f07f3bfd-9d44-4cfc-9834-4f55accc4c8a" />
 
 
 
